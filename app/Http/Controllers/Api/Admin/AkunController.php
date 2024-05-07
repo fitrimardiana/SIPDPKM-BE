@@ -37,7 +37,6 @@ class AkunController extends Controller
             'nama'     => 'required',
             'tipe'   => 'required',
             'no_hp'   => 'required',
-            'password'   => 'required',
         ]);
 
         //check if validation fails
