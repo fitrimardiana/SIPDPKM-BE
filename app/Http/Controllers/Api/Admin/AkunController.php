@@ -89,7 +89,6 @@ class AkunController extends Controller
         return response()->json($response)->setStatusCode(200);
     }
 
-
     public function dataById($id)
     {
 
