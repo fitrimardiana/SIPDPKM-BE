@@ -56,7 +56,7 @@ class AkunController extends Controller
         $param = [
             'email'      => $request->email,
             'type'      => $request->tipe,
-            'password'      => Hash::make($request->password),
+            'password'      => Hash::make('12345678'),
             'created_at'  => date('Y-m-d H:i:s'),
         ];
         $user_id = AkunModel::insert($param);
