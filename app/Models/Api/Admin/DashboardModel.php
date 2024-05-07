@@ -173,21 +173,10 @@ class DashboardModel extends DB
 
     public static function countLaporanAccDosen()
     {
-        $countDosen = DB::table('laporan')
+        return DB::table('laporan')
         ->where('arsip', '0')
         ->where('status', 'Disetujui Dosen')
         ->count();
-
-    // Menghitung jumlah laporan yang disetujui oleh kadep
-    $countKadep = DB::table('laporan')
-        ->where('arsip', '0')
-        ->where('status', 'Disetujui Kadep')
-        ->count();
-
-    // Menjumlahkan kedua hasil perhitungan
-    $totalCount = $countDosen + $countKadep;
-
-    return $totalCount;
     }
 
     public static function countLaporanAccKadep()
