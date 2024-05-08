@@ -17,7 +17,7 @@ class DashboardController extends Controller
         $user_type = Auth::user()->type;
         if ($user_type == 'mahasiswa') {
             $jml_proposal = DashboardModel::countProposalMhs();
-            $jml_lpj = DashboardModel::countlpjMhs();
+            $jml_lpj = DashboardModel::countLpjMhs();
             $jml_dokumen_acc = DashboardModel::countLaporanAcc();
             $jml_revisi = DashboardModel::countRevisi();
             $all_data = DashboardModel::getAllDataMhs();
@@ -32,9 +32,9 @@ class DashboardController extends Controller
             ];
         } elseif ($user_type == 'admin') {
             $jml_proposal = DashboardModel::countProposal();
-            $jml_lpj = DashboardModel::countlpj();
-            $jml_kegiatan = DashboardModel::countkegiatan();
-            $jml_user = DashboardModel::countuser();
+            $jml_lpj = DashboardModel::countLpj();
+            $jml_kegiatan = DashboardModel::countKegiatan();
+            $jml_user = DashboardModel::countUser();
             $all_data = DashboardModel::getAllData();
             $data = [
                 "jml_proposal" => $jml_proposal,
