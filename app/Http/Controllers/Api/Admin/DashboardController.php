@@ -37,8 +37,8 @@ class DashboardController extends Controller
             $jml_user = DashboardModel::countuser();
             $all_data = DashboardModel::getAllData();
             $data = [
-                "jml_arsip_proposal" => $jml_proposal,
-                "jml_arsip_lpj" => $jml_lpj,
+                "jml_proposal" => $jml_proposal,
+                "jml_lpj" => $jml_lpj,
                 "jml_kegiatan" => $jml_kegiatan,
                 "jml_user" => $jml_user,
                 "all_data" => $all_data,
