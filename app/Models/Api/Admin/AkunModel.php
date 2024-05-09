@@ -48,7 +48,7 @@ class AkunModel extends DB
 
     public static function update($id, $params)
     {
-        return DB::table('users')->where('email', $id)->update($params);
+        return DB::table('users')->where('id', $id)->update($params);
     }
 
     public static function updateDetail($id, $params)

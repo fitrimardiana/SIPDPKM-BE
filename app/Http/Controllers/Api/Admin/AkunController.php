@@ -14,7 +14,6 @@ use Throwable;
 
 class AkunController extends Controller
 {
-
     public $currentUrl;
 
     public function index()
@@ -263,7 +262,6 @@ class AkunController extends Controller
 
         return response()->json($response)->setStatusCode(200);
     }
-
     public function updatePassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
