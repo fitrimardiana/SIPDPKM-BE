@@ -33,11 +33,11 @@ class AkunController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email'     => 'required',
-            'nama'     => 'required',
             'tipe'   => 'required',
+            'nama'     => 'required',
+            'jabatan' => 'required',
             'no_hp'   => 'required',
             'bidang' => 'required',
-            'jabatan' => 'required',
         ]);
 
         if ($validator->fails()) {
