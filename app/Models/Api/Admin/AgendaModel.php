@@ -36,7 +36,7 @@ class AgendaModel extends Model
     public static function getDetailById($id)
     {
         return DB::table('kegiatan as a')
-            ->select('a.nama', 'a.tgl_mulai', 'a.tgl_selesai', 'a.jam_mulai', 'a.jam_selesai', 'a.tempat', 'b.bidang', 'b.no_kegiatan', 'b.status', 'a.tujuan', 'a.proposal_id', 'a.lpj_id')
+            ->select('a.nama', 'a.tgl_mulai', 'a.tgl_selesai', 'a.jam_mulai', 'a.jam_selesai', 'a.tempat', 'a.jadwal', 'b.bidang', 'b.no_kegiatan', 'b.status', 'a.tujuan', 'a.proposal_id', 'a.lpj_id')
             ->leftJoin('laporan as b', 'b.id', 'a.proposal_id')
             ->leftJoin('laporan as c', 'c.id', 'a.lpj_id')
             ->where('a.id', $id)
