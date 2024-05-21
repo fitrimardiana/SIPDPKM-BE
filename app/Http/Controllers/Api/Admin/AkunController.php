@@ -36,17 +36,16 @@ class AkunController extends Controller
             'nama'     => 'required',
             'tipe'   => 'required',
             'no_hp'   => 'required',
-            'bidang' => 'required'
+            'bidang' => 'required',
+            'jabatan' => 'required',
         ]);
 
-        //check if validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
         $user = AkunModel::getByEmail($request->email);
         if (!empty($user)) {
-            // flash message
             $response = [
                 'message' => 'Data gagal disimpan. Email ' . $request->email . ' sudah terdaftar!'
             ];
@@ -54,8 +53,8 @@ class AkunController extends Controller
         }
 
         $param = [
-            'email'      => $request->email,
-            'type'      => $request->tipe,
+            'email' => $request->email,
+            'type' => $request->tipe,
             'password'      => Hash::make('12345678'),
             'created_at'  => date('Y-m-d H:i:s'),
         ];
@@ -72,7 +71,6 @@ class AkunController extends Controller
         ];
         $insert = AkunModel::insertDetail($params);
 
-        //return response
         if ($insert) {
             $response = [
                 "status"    => true,
@@ -104,7 +102,6 @@ class AkunController extends Controller
 
             return response()->json($response)->setStatusCode(200);
         } else {
-            // return json
             $response = [
                 "status"    => false,
                 "message"   => 'Data tidak ditemukan.'
@@ -140,7 +137,6 @@ class AkunController extends Controller
             'email'     => 'required',
         ]);
 
-        //check if validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
@@ -161,7 +157,6 @@ class AkunController extends Controller
         ];
         $insert = AkunModel::updateDetail($request->id, $params);
 
-        //return response
         if ($insert) {
             $response = [
                 "status"    => true,
@@ -211,7 +206,6 @@ class AkunController extends Controller
 
             return response()->json($response)->setStatusCode(200);
         } else {
-            // return json
             $response = [
                 "status"    => false,
                 "message"   => 'Data tidak ditemukan.'
@@ -227,7 +221,6 @@ class AkunController extends Controller
             'email'     => 'required',
         ]);
 
-        //check if validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
@@ -247,7 +240,6 @@ class AkunController extends Controller
         ];
         $insert = AkunModel::updateDetail($request->id, $params);
 
-        //return response
         if ($insert) {
             $response = [
                 "status"    => true,
@@ -270,7 +262,6 @@ class AkunController extends Controller
             'password'          => 'required|min:8|max:20'
         ]);
 
-        //check if validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
@@ -281,7 +272,6 @@ class AkunController extends Controller
         ];
         $update = AkunModel::update($request->email, $param);
 
-        //return response
         if ($update) {
             $response = [
                 "status"    => true,
@@ -305,7 +295,6 @@ class AkunController extends Controller
             'no_hp'          => 'required'
         ]);
 
-        //check if validation fails
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
@@ -326,7 +315,6 @@ class AkunController extends Controller
                 'user_name' => $user->nama,
                 'reset_url' => "ganti sesuai url web nya"
             ];
-            // try send mail
             Mail::to($data['user_email'])->send(new SendEmail($data));
 
             $response = [
